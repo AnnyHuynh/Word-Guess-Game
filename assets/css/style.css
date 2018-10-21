@@ -1,0 +1,62 @@
+body{
+background: url(../images/background.jpg);
+}
+h1{
+  font-weight: 300px;
+  color: darkmagenta;
+  border-color: 10px black;
+  font-style: italic;
+  font-size: 60px;
+  text-align: center;
+  margin-top: 30px;
+}
+.container{
+width: 1200px;
+background-color: lightgreen;
+border: 2px solid darkblue;
+padding-left: 160px;
+margin-top: 80px;
+height: 600px;
+line-height: 30px;
+}
+.col-md-5{
+  background-color: burlywood;
+  margin-top: 90px;
+  width: 400px;
+  height: 400px;
+  position: relative;
+  right: 60px;
+  bottom: 20px;
+}
+img{
+  width: 100%;
+  height: 395px;
+  padding: 20px;
+}
+#animal-name{
+  border: 4px black;
+  margin: 0 auto;
+}
+#word{
+  margin-bottom: 20px;
+  background-color: darksalmon
+}
+#letter{
+  width: 60px;
+  background-color: darksalmon;
+}
+button{
+  background-color: blueviolet;
+  border: 2px solid black;
+  margin-left: 30px;
+}
+
+#word {
+  width: 200px;
+  height: 40px;
+  border: 1px inset #fff;
+}
+
+#letter {
+  height: 60px;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Word Guess Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+  
+</head>
+
+<body>
+
+  <h1>What's Name of The Animal!</h1>
+
+  <div class =container>
+    <div class="row">
+      <div class="col-md-5">
+        <section>
+         <img id ="animal-name" alt = "Animal image">
+        </section>
+      </div>
+      <div class="col-md-7">
+        <section>
+         <div>
+           <br>
+           <br>
+          <h2>Please Enter Any Key To Get Started!</h2>
+          <!-- <br> -->
+          <h3>Have 10 Guesses!</h3> 
+        </div>
+         <br>
+        <div><strong> Animal Name: </strong></div>
+        <!-- <input id="word"> -->
+        <div id="word"></div>    
+        <br>
+        <div id="letter"></div>
+        <!-- <strong><div>Enter a Letter: <input id="letter"><button id="enter" onclick="checkletter()">Enter</button></div></strong> -->
+        <br>
+       <div><strong> #Guesses Remaining: </strong></div>
+        <div id="attemptsLeft">  </div>
+    
+        <div id="guessed"><strong> Letters That already Guessed: </strong></div>
+        
+        <div >  </div>
+       </section>
+    
+      </div>
+    </div>
+
+  </div>
+  <script src="assets/javascript/game.js"></script>
+
+</body>
+
+</html>
