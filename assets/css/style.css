@@ -1,9 +1,10 @@
 body{
-background: url(../images/background.jpg);
+background: url(../images/eggs.jpeg);
 }
 h1{
-  font-weight: 300px;
-  color: darkmagenta;
+  font-weight: 500px;
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  color: rgb(85, 3, 54);
   border-color: 10px black;
   font-style: italic;
   font-size: 60px;
@@ -12,7 +13,7 @@ h1{
 }
 .container{
 width: 1200px;
-background-color: lightgreen;
+background-color: rgba(235, 144, 238, 0.699);
 border: 2px solid darkblue;
 padding-left: 160px;
 margin-top: 80px;
@@ -20,7 +21,7 @@ height: 600px;
 line-height: 30px;
 }
 .col-md-5{
-  background-color: burlywood;
+  background-color: rgba(226, 148, 45, 0.904);
   margin-top: 90px;
   width: 400px;
   height: 400px;
@@ -39,11 +40,11 @@ img{
 }
 #word{
   margin-bottom: 20px;
-  background-color: darksalmon
+  background-color: rgb(228, 128, 81)
 }
 #letter{
   width: 60px;
-  background-color: darksalmon;
+  background-color: rgb(230, 123, 88);
 }
 button{
   background-color: blueviolet;

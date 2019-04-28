@@ -15,15 +15,12 @@ var letter = document.getElementById("letter")
 console.log('computerChoice', computerChoice) 
 idAttemptsLeft.textContent = attemptsLeft;
 
-
 for(var i = 0; i < computerChoice.length; i++) {
   array.push('_')
 }
 
 
 idWord.textContent = array.join(' ')
-
-
 
 document.onkeyup = function() {
  
@@ -38,7 +35,6 @@ document.onkeyup = function() {
   if(computerChoice[c] === userGuess) {
     array[c] = userGuess
     idWord.textContent = array.join(' ')
-
   }};
 
   if (indexGuess === -1){
@@ -72,7 +68,21 @@ document.onkeyup = function() {
    }
   }
   makePic();
+
+  function restart(){
+
+    if (attemptsLeft === 0){
+      array = [];
+    }
+
+  }
+  restart();
 }
+
+
+
+
+
 
   
 
