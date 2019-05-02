@@ -1,59 +1,109 @@
 
-//id: word, letter, enter, guessed, attemptsLeft;
-var idWord = document.getElementById("word");
-//var idEnter = document.getElementById("enter");
-var idGuessed = document.getElementById("guessed");
-var idAttemptsLeft = document.getElementById("attemptsLeft");
-var attemptsLeft = 10;
+var computerChoice ="";
+var lettersInComputerChoice = [];
+var numBlanks = 0;
+var guess = "";
+var blanksAndSuccesses = [];
+var wrongGuesses = [];
+
+var idAttemptsLeft = 10;
 
 var animals = ["dog", "cat", "pig","horse", "chicken"];
-var computerChoice = animals[Math.floor(Math.random() * animals.length)].split('');
 
-var array = []
-var letter = document.getElementById("letter")
+function startGame(){
+  guess = "";
+  idAttemptsLeft = 10;
+  computerChoice = animals[Math.floor(Math.random() * animals.length)]
+  lettersInComputerChoice = computerChoice.split('');
+  numBlanks = lettersInComputerChoice.length;
+  console.log(computerChoice);
+  // CRITICAL LINE - Here we *reset* the guess and success array at each round.
+  blanksAndSuccesses = [];
+  // CRITICAL LINE - Here we *reset* the wrong guesses from the previous round.
+  wrongGuesses = [];
+  // Print the initial blanks in console.
+  console.log(blanksAndSuccesses);
+  // Reprints the guessesLeft to 10
+  // Fill up the blanksAndSuccesses list with appropriate number of blanks.
+  // This is based on number of letters in solution.
+  for (var i = 0; i < numBlanks; i++) {
+    blanksAndSuccesses.push("_");
+  }
+  document.getElementById("letter").innerHTML = guess;
+  document.getElementById("attemptsLeft").innerHTML = idAttemptsLeft;
+  document.getElementById("word").innerHTML = blanksAndSuccesses.join(" ");
+  document.getElementById("guessed").innerHTML=wrongGuesses.join(" ");
 
-console.log('computerChoice', computerChoice) 
-idAttemptsLeft.textContent = attemptsLeft;
-
-for(var i = 0; i < computerChoice.length; i++) {
-  array.push('_')
 }
 
+function checkLetters(guessedLetter){
+   //var guessedLetter = document.getElementById("letter").innerHTML;
+   // This boolean will be toggled based on whether or not a user letter is found anywhere in the word.
+   var letterInWord = false;
 
-idWord.textContent = array.join(' ')
-
-document.onkeyup = function() {
- 
-  var userGuess = event.key
-
-  letter.textContent = userGuess
-
-  var indexGuess = computerChoice.indexOf(userGuess)
-
-  for (var c = 0; c < computerChoice.length; c++){
-  
-  if(computerChoice[c] === userGuess) {
-    array[c] = userGuess
-    idWord.textContent = array.join(' ')
-  }};
-
-  if (indexGuess === -1){
-
-    var guessSpan = document.createElement("span")
-    guessSpan.textContent = userGuess
-    idGuessed.appendChild(guessSpan)
-
-    attemptsLeft -= 1;
-    idAttemptsLeft.textContent = attemptsLeft;
-    console.log(attemptsLeft);
-
+   for (var i = 0; i < numBlanks; i++) {
+    if (lettersInComputerChoice[i] === guessedLetter) {
+      // If the letter exists then toggle this boolean to true. This will be used in the next step.
+      letterInWord = true;
+    }
   }
+    if(letterInWord){
+      for (var j = 0; j < numBlanks; j++){
+        if (lettersInComputerChoice[j] === guessedLetter){
+          blanksAndSuccesses[j] = guessedLetter;
+          guess = guessedLetter;
+         // Logging for testing.
+         console.log(blanksAndSuccesses[j]);
+      }
+    }
+  }
+
+  else{
+    guess = guessedLetter;
+    wrongGuesses.push(guessedLetter);
+    idAttemptsLeft--;
+  }
+
+}
+
+function roundComplete(){
+
+  document.getElementById("letter").innerHTML = guess;
+
+  document.getElementById("attemptsLeft").innerHTML = idAttemptsLeft;
+
+  document.getElementById("word").innerHTML = blanksAndSuccesses.join(" "); 
+
+  document.getElementById("guessed").innerHTML=wrongGuesses.join(" ");
+  
+
+  if (lettersInComputerChoice.toString() === blanksAndSuccesses.toString()){
+    makePic();
+    startGame();  
+  }
+  else if (idAttemptsLeft === 0){
+    startGame();
+  }
+
+}
+
+// Starts the Game by running the startGame() function
+startGame();
+
+document.onkeyup = function(event) {
+ 
+  var letterGuessed = String.fromCharCode(event.which).toLowerCase();
+
+  checkLetters(letterGuessed);
+  roundComplete();
+
+}
 
   function makePic(){
     console.log("picture", picture);
     console.log(idWord2);
   var picture = document.getElementById("animal-name");
-  var idWord2 = idWord.textContent.split(' ').join("");
+  var idWord2 = blanksAndSuccesses.join("");
   if (idWord2 === animals[0]){
     console.log(idWord2);
     picture.src = 'assets/images/dog.jpg'
@@ -69,15 +119,14 @@ document.onkeyup = function() {
   }
   makePic();
 
-  function restart(){
 
-    if (attemptsLeft === 0){
-      array = [];
-    }
 
-  }
-  restart();
-}
+
+
+
+
+
+
 
 
 
