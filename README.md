@@ -8,6 +8,9 @@
 
 * https://annyhuynh.github.io/Word-Guess-Game/
 
+### View App:
+![App:](./assets/images/WGG.jpg)
+
 * Press any key to get started, and guess what's name of the animal behind the picture box.
 * Hint:look at how many letter spaces on the animal's name. 
 * If the word is `Dog`, it displays like this when the game starts: `_ _ _`.
